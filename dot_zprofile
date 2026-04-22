@@ -1,0 +1,2 @@
+# Homebrew — set up PATH and environment for login shells
+eval "$(/opt/homebrew/bin/brew shellenv)"

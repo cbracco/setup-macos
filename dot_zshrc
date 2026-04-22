@@ -1,0 +1,91 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_NO_AUTO_UPDATE=1
+
+# mise (runtime version manager — replaces pyenv, nvm, rbenv)
+eval "$(mise activate zsh)"
+
+# Starship prompt
+eval "$(starship init zsh)"
+
+# Environment
+export EDITOR="vim"
+
+# History
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY_TIME
+setopt EXTENDED_HISTORY
+
+# Completion
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+# Key bindings
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+
+# Aliases — navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~"
+alias -- -="cd -"
+alias dev="cd ~/Development"
+
+# Aliases — filesystem (eza replaces ls)
+alias ls="eza"
+alias l="eza -lF --git"
+alias la="eza -laF --git"
+alias lsd="eza -lF --git | grep '^d'"
+alias lt="eza --tree --level=2"
+alias cat="bat --paging=never"
+alias grep="grep --color=auto"
+
+# Aliases — git
+alias g="git"
+alias gs="git status"
+alias gd="git diff"
+alias gl="git log --oneline --graph --decorate"
+alias gp="git pull"
+alias gP="git push"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias gcm="git commit -m"
+
+# Aliases — history
+alias history="fc -l 1"
+alias clearhistory='truncate -s 0 "${HISTFILE}"'
+alias he="history -a"
+alias hi="history -n"
+
+# Aliases — macOS
+alias flushdns="sudo killall -HUP mDNSResponder"
+alias ql="qlmanage -p &>/dev/null"
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias ip="curl icanhazip.com"
+alias localip="ipconfig getifaddr en0"
+
+# Aliases — misc
+alias ax="chmod a+x"
+alias cpwd='pwd | tr -d "\n" | pbcopy'
+alias sudo="sudo "
+alias ungit="find . -name '.git' -exec rm -rf {} \;"
+alias reload="source ~/.zshrc"
+alias path='echo $PATH | tr ":" "\n"'
+
+# Functions
+md() { mkdir -p "$@" && cd "$_"; }

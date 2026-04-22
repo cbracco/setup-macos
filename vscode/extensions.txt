@@ -1,0 +1,43 @@
+# Themes
+Catppuccin.catppuccin-vsc
+Catppuccin.catppuccin-vsc-icons
+
+# Editor
+editorconfig.editorconfig
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+stylelint.vscode-stylelint
+
+# Git
+eamodio.gitlens
+ziyasal.vscode-open-in-github
+
+# Python
+ms-python.python
+ms-python.vscode-pylance
+ms-python.debugpy
+ms-python.isort
+
+# JavaScript / TypeScript
+bradlc.vscode-tailwindcss
+unifiedjs.vscode-mdx
+vue.vue-official
+
+# Templates / Markup
+batisteo.vscode-django
+ginfuru.better-nunjucks
+onecentlin.laravel-blade
+syler.sass-indented
+
+# Docker
+ms-azuretools.vscode-containers
+
+# Jupyter
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-toolsai.vscode-jupyter-cell-tags
+ms-toolsai.vscode-jupyter-slideshow
+
+# Misc
+anthropic.claude-code

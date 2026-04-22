@@ -1,0 +1,44 @@
+{
+    "breadcrumbs.enabled": true,
+    "editor.fontFamily": "Roboto Mono",
+    "editor.fontSize": 14,
+    "editor.fontWeight": "400",
+    "editor.lineHeight": 22,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [72, 80],
+    "editor.scrollBeyondLastLine": false,
+    "editor.snippetSuggestions": "top",
+    "editor.stickyScroll.enabled": false,
+    "editor.wordWrap": "on",
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "explorer.confirmDragAndDrop": true,
+    "files.associations": {
+        "**/*.html": "html",
+        "**/templates/**/*.html": "django-html",
+        "**/templates/**/*": "django-txt",
+        "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "js.updateImportsOnFileMove.enabled": "never",
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/tmp": true
+    },
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.lineHeight": 1.2,
+    "ts.preferences.importModuleSpecifier": "non-relative",
+    "window.commandCenter": false,
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.iconTheme": "catppuccin-macchiato",
+    "workbench.startupEditor": "welcomePage",
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.tree.renderIndentGuides": "always"
+}

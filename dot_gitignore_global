@@ -1,0 +1,29 @@
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+### Editors ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.idea/
+*.swp
+*.swo
+*~
+
+### Misc ###
+*.log
+*.pid
+.env
+.env.local
+.env.*.local

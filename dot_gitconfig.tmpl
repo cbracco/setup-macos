@@ -1,0 +1,79 @@
+[user]
+    name = {{ .name }}
+    email = {{ .email }}
+
+[core]
+    whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+    trustctime = false
+    precomposeunicode = true
+    editor = vim
+
+[apply]
+    whitespace = fix
+
+[pull]
+    rebase = true
+
+[push]
+    default = current
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+
+[rebase]
+    autosquash = true
+
+[diff]
+    renames = copies
+
+[merge]
+    log = true
+
+[credential]
+    helper = osxkeychain
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
+
+[user]
+    signingkey = ~/.ssh/id_ed25519
+
+[init]
+    defaultBranch = main
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[alias]
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    s = status
+    d = diff
+    tags = tag -l
+    branches = branch --all
+    remotes = remote -v
+    contributors = shortlog --summary --numbered
+    undo = reset HEAD~1 --mixed
+    stash-all = stash save --include-untracked
