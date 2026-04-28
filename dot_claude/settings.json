@@ -1,8 +1,15 @@
 {
   "alwaysThinkingEnabled": true,
+  "showThinkingSummaries": true,
   "skipDangerousModePermissionPrompt": true,
   "effortLevel": "medium",
+  "autoUpdatesChannel": "stable",
+  "cleanupPeriodDays": 180,
+  "tui": "fullscreen",
+  "viewMode": "focus",
   "permissions": {
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": ["~/Development"],
     "allow": [
       "Read",
       "Bash(cat *)",
