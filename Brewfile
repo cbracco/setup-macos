@@ -40,6 +40,7 @@ cask "adobe-creative-cloud"
 cask "bartender"
 cask "desktoppr"             # set desktop wallpaper
 cask "claude"
+cask "claude-code"
 cask "docker"
 cask "firefox"
 cask "font-roboto-mono"
