@@ -21,7 +21,7 @@ ms-python.isort
 # JavaScript / TypeScript
 bradlc.vscode-tailwindcss
 unifiedjs.vscode-mdx
-vue.vue-official
+vue.volar
 
 # Templates / Markup
 batisteo.vscode-django
