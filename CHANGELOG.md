@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.16] - 2026-05-15
+
+### Added
+- `.chezmoiignore` — prevent `bootstrap.sh`, `Brewfile`, `CHANGELOG.md`, `README.md`, `assets/`, `macos/`, and `vscode/` from being copied to `$HOME` by `chezmoi apply`
+
+### Fixed
+- `bootstrap.sh` — export `CHEZMOI_SOURCE` so `defaults.sh` inherits the correct value
+- `bootstrap.sh` — pass `--force` to `chezmoi apply` to always overwrite without prompting
+- `macos/defaults.sh` — write Safari defaults to the sandboxed container path (macOS Sonoma+) instead of `com.apple.Safari`, which was failing silently
+- `macos/defaults.sh` — derive assets directory from the script's own location when `CHEZMOI_SOURCE` is not set, fixing avatar and wallpaper skips
+- `macos/defaults.sh` — look for `desktoppr` at `/opt/homebrew/bin/desktoppr` as a fallback when it is not yet on `$PATH`
+
 ## [1.0.15] - 2026-05-15
 
 ### Added

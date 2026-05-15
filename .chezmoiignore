@@ -1,0 +1,7 @@
+bootstrap.sh
+Brewfile
+CHANGELOG.md
+README.md
+assets/**
+macos/**
+vscode/**

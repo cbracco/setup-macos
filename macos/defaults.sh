@@ -159,15 +159,16 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 # Safari
 ###############################################################################
 
-# Enable the Develop menu and Web Inspector
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-
-# Prevent Safari from opening safe files automatically
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-
-# Show full URL in address bar
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+# macOS Sonoma+ sandboxes Safari — must write to the container preferences path
+SAFARI_PREFS="$HOME/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari"
+if [[ -d "$(dirname "$SAFARI_PREFS")" ]]; then
+    defaults write "$SAFARI_PREFS" IncludeDevelopMenu -bool true
+    defaults write "$SAFARI_PREFS" WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+    defaults write "$SAFARI_PREFS" AutoOpenSafeDownloads -bool false
+    defaults write "$SAFARI_PREFS" ShowFullURLInSmartSearchField -bool true
+else
+    echo "  Skipping Safari defaults: container not found (open Safari once, then re-run)"
+fi
 
 ###############################################################################
 # TextEdit
@@ -198,7 +199,7 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 # User Avatar
 ###############################################################################
 
-ASSETS_DIR="${CHEZMOI_SOURCE:-$HOME/.local/share/chezmoi}/assets"
+ASSETS_DIR="${CHEZMOI_SOURCE:-${0:A:h:h}}/assets"
 USER_PICTURE="$ASSETS_DIR/UserPicture.jpg"
 USER_PICTURE_DEST="/Library/User Pictures/$(whoami).jpg"
 
@@ -226,8 +227,9 @@ fi
 
 DESKTOP_BG="$ASSETS_DIR/DesktopBackground.jpg"
 
-if [[ -f "$DESKTOP_BG" ]] && command -v desktoppr &>/dev/null; then
-    desktoppr "$DESKTOP_BG"
+DESKTOPPR="$(command -v desktoppr 2>/dev/null || echo /opt/homebrew/bin/desktoppr)"
+if [[ -f "$DESKTOP_BG" ]] && [[ -x "$DESKTOPPR" ]]; then
+    "$DESKTOPPR" "$DESKTOP_BG"
 else
     echo "  Skipping wallpaper: file or desktoppr not found"
 fi

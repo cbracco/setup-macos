@@ -13,7 +13,7 @@
 set -e
 
 REPO="https://github.com/cbracco/setup-macos.git"
-CHEZMOI_SOURCE="$HOME/Development/www/setup-macos"
+export CHEZMOI_SOURCE="$HOME/Development/www/setup-macos"
 
 log()  { printf "\n\033[1;34m▶ %s\033[0m\n" "$1"; }
 ok()   { printf "  \033[1;32m✓ %s\033[0m\n" "$1"; }
@@ -67,7 +67,7 @@ else
     mkdir -p "$(dirname "$CHEZMOI_SOURCE")"
     git clone "$REPO" "$CHEZMOI_SOURCE"
 fi
-chezmoi apply --source "$CHEZMOI_SOURCE"
+chezmoi apply --source "$CHEZMOI_SOURCE" --force
 ok "Applied"
 
 # ---------------------------------------------------------------------------
