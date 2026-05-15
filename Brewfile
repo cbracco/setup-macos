@@ -1,6 +1,3 @@
-# Taps
-tap "homebrew/cask-fonts"
-
 # CLI tools
 brew "bat"                   # better cat
 brew "chezmoi"               # dotfiles manager
