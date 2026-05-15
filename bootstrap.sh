@@ -67,8 +67,7 @@ else
     mkdir -p "$(dirname "$CHEZMOI_SOURCE")"
     git clone "$REPO" "$CHEZMOI_SOURCE"
 fi
-mkdir -p "$HOME/.config/chezmoi"
-printf 'sourceDir = "%s"\n' "$CHEZMOI_SOURCE" > "$HOME/.config/chezmoi/chezmoi.toml"
+chezmoi init --source "$CHEZMOI_SOURCE"
 chezmoi apply
 ok "Applied"
 
@@ -97,7 +96,7 @@ fi
 # 7. macOS defaults
 # ---------------------------------------------------------------------------
 log "macOS defaults"
-CHEZMOI_COMPUTER_NAME="$(chezmoi data --source "$CHEZMOI_SOURCE" --format=json 2>/dev/null | python3 -c 'import sys,json; print(json.load(sys.stdin).get("computername",""))' 2>/dev/null || true)"
+CHEZMOI_COMPUTER_NAME="$(chezmoi data --format=json 2>/dev/null | python3 -c 'import sys,json; print(json.load(sys.stdin).get("computername",""))' 2>/dev/null || true)"
 export CHEZMOI_COMPUTER_NAME
 source "$CHEZMOI_SOURCE/macos/defaults.sh"
 ok "Applied"
