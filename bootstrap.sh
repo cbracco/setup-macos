@@ -84,8 +84,11 @@ log "VSCode extensions"
 if command -v code &>/dev/null; then
     while IFS= read -r ext || [[ -n "$ext" ]]; do
         [[ -z "$ext" || "$ext" == \#* ]] && continue
-        code --install-extension "$ext" --force &>/dev/null
-        ok "$ext"
+        if code --install-extension "$ext" --force &>/dev/null; then
+            ok "$ext"
+        else
+            info "Warning: failed to install $ext"
+        fi
     done < "$CHEZMOI_SOURCE/vscode/extensions.txt"
 else
     info "Skipping — 'code' CLI not found. Open VSCode and run: Shell Command: Install 'code' in PATH"
@@ -95,7 +98,9 @@ fi
 # 7. macOS defaults
 # ---------------------------------------------------------------------------
 log "macOS defaults"
-CHEZMOI_COMPUTER_NAME="$(chezmoi data --format=json 2>/dev/null | python3 -c 'import sys,json; print(json.load(sys.stdin).get("computername",""))' 2>/dev/null || true)"
+set +e
+CHEZMOI_COMPUTER_NAME="$(chezmoi data --format=json 2>/dev/null | python3 -c 'import sys,json; print(json.load(sys.stdin).get("computername",""))' 2>/dev/null)"
+set -e
 export CHEZMOI_COMPUTER_NAME
 if zsh "$CHEZMOI_SOURCE/macos/defaults.sh"; then
     ok "Applied"
