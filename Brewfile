@@ -3,7 +3,6 @@ brew "bat"                   # better cat
 brew "chezmoi"               # dotfiles manager
 brew "composer"
 brew "coreutils"
-brew "desktoppr"             # set desktop wallpaper
 brew "eza"                   # better ls
 brew "fd"                    # better find
 brew "ffmpeg"
@@ -39,6 +38,7 @@ brew "yt-dlp"
 cask "1password"
 cask "adobe-creative-cloud"
 cask "bartender"
+cask "desktoppr"             # set desktop wallpaper
 cask "claude"
 cask "docker"
 cask "firefox"
