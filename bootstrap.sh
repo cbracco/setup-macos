@@ -97,8 +97,11 @@ fi
 log "macOS defaults"
 CHEZMOI_COMPUTER_NAME="$(chezmoi data --format=json 2>/dev/null | python3 -c 'import sys,json; print(json.load(sys.stdin).get("computername",""))' 2>/dev/null || true)"
 export CHEZMOI_COMPUTER_NAME
-source "$CHEZMOI_SOURCE/macos/defaults.sh"
-ok "Applied"
+if zsh "$CHEZMOI_SOURCE/macos/defaults.sh"; then
+    ok "Applied"
+else
+    info "Warning: macOS defaults finished with errors (non-fatal)"
+fi
 
 # ---------------------------------------------------------------------------
 # 9. FileVault
