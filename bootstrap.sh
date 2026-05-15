@@ -59,7 +59,9 @@ fi
 # ---------------------------------------------------------------------------
 log "Dotfiles"
 if [[ -d "$CHEZMOI_SOURCE/.git" ]]; then
-    ok "Repo already exists at $CHEZMOI_SOURCE"
+    info "Repo already exists at $CHEZMOI_SOURCE — pulling latest..."
+    git -C "$CHEZMOI_SOURCE" pull --ff-only
+    ok "Up to date"
 else
     info "Cloning to $CHEZMOI_SOURCE..."
     mkdir -p "$(dirname "$CHEZMOI_SOURCE")"
