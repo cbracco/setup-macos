@@ -68,7 +68,7 @@ else
     git clone "$REPO" "$CHEZMOI_SOURCE"
 fi
 chezmoi init --source "$CHEZMOI_SOURCE"
-chezmoi apply
+chezmoi apply --source "$CHEZMOI_SOURCE"
 ok "Applied"
 
 # ---------------------------------------------------------------------------
