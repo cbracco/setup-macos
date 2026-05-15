@@ -67,7 +67,6 @@ else
     mkdir -p "$(dirname "$CHEZMOI_SOURCE")"
     git clone "$REPO" "$CHEZMOI_SOURCE"
 fi
-chezmoi init --source "$CHEZMOI_SOURCE"
 chezmoi apply --source "$CHEZMOI_SOURCE"
 ok "Applied"
 
