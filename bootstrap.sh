@@ -67,7 +67,25 @@ else
     mkdir -p "$(dirname "$CHEZMOI_SOURCE")"
     git clone "$REPO" "$CHEZMOI_SOURCE"
 fi
-chezmoi init --source "$CHEZMOI_SOURCE"
+CHEZMOI_CONFIG="$HOME/.config/chezmoi/chezmoi.yaml"
+mkdir -p "$(dirname "$CHEZMOI_CONFIG")"
+
+EXISTING_NAME="$(grep -A3 '^data:' "$CHEZMOI_CONFIG" 2>/dev/null | grep 'name:' | sed 's/.*name: *"\?\([^"]*\)"\?.*/\1/' || true)"
+EXISTING_EMAIL="$(grep -A3 '^data:' "$CHEZMOI_CONFIG" 2>/dev/null | grep 'email:' | sed 's/.*email: *"\?\([^"]*\)"\?.*/\1/' || true)"
+EXISTING_COMPUTERNAME="$(grep -A3 '^data:' "$CHEZMOI_CONFIG" 2>/dev/null | grep 'computername:' | sed 's/.*computername: *"\?\([^"]*\)"\?.*/\1/' || true)"
+
+[[ -n "$EXISTING_NAME" ]]         && USER_NAME="$EXISTING_NAME"         || { printf "  Full name: ";         read -r USER_NAME; }
+[[ -n "$EXISTING_EMAIL" ]]        && USER_EMAIL="$EXISTING_EMAIL"        || { printf "  Email address: ";     read -r USER_EMAIL; }
+[[ -n "$EXISTING_COMPUTERNAME" ]] && USER_COMPUTERNAME="$EXISTING_COMPUTERNAME" || { printf "  Computer name: "; read -r USER_COMPUTERNAME; }
+
+cat > "$CHEZMOI_CONFIG" <<EOF
+sourceDir: "$CHEZMOI_SOURCE"
+data:
+    name: "$USER_NAME"
+    email: "$USER_EMAIL"
+    computername: "$USER_COMPUTERNAME"
+EOF
+
 chezmoi apply
 ok "Applied"
 
