@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.17] - 2026-05-31
+
+### Fixed
+- `bootstrap.sh` — add `mise install` step after Homebrew packages so Node, Python, and other runtimes are actually installed (they were configured in `~/.config/mise/config.toml` but never installed, leaving `node`, `npm`, and `yarn` missing from PATH)
+
 ## [1.0.16] - 2026-05-15
 
 ### Added
