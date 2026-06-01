@@ -43,5 +43,6 @@
     "workbench.tree.renderIndentGuides": "always",
     "terminal.integrated.initialHint": false,
     "terminal.integrated.mouseWheelScrollSensitivity": 3,
-    "terminal.integrated.stickyScroll.enabled": false
+    "terminal.integrated.stickyScroll.enabled": false,
+    "unocss.root": "."
 }
