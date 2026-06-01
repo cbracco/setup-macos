@@ -24,6 +24,7 @@ unifiedjs.vscode-mdx
 vue.volar
 
 # Templates / Markup
+antfu.unocss
 batisteo.vscode-django
 ginfuru.better-nunjucks
 onecentlin.laravel-blade
