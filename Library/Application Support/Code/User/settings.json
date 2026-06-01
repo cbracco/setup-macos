@@ -40,5 +40,8 @@
     "workbench.iconTheme": "catppuccin-macchiato",
     "workbench.startupEditor": "welcomePage",
     "workbench.tree.enableStickyScroll": false,
-    "workbench.tree.renderIndentGuides": "always"
+    "workbench.tree.renderIndentGuides": "always",
+    "terminal.integrated.initialHint": false,
+    "terminal.integrated.mouseWheelScrollSensitivity": 3,
+    "terminal.integrated.stickyScroll.enabled": false
 }
