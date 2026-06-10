@@ -15,6 +15,7 @@ brew "imagemagick"
 brew "jq"
 brew "libjpeg"
 brew "libpng"
+brew "lima"
 brew "mise"                  # runtime version manager
 brew "mysql@8.0"
 brew "nginx"
