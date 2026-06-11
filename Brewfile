@@ -39,6 +39,7 @@ brew "yt-dlp"
 cask "1password"
 cask "adobe-creative-cloud"
 cask "bartender"
+cask "beekeeper-studio"
 cask "desktoppr"             # set desktop wallpaper
 cask "claude"
 cask "claude-code"
